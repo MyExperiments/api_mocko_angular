@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Angular QuickStart</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
+    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('main.js').catch(function(err){ console.error(err); });
+    </script>
+  </head>
+
+  <body>
+    <section class="container">
+      <header class="header dark-bg">
+        <div class="toggle-nav">
+          <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+        </div>
+        <!--logo start-->
+        <a href="#" class="logo pull-left m-t-5">
+          <span class="lite">ApiMocko</span>
+        </a>
+        <!--logo end-->
+      </header>
+      <section class="container">
+        <section class="wrapper">
+          <div class="row">
+            <home>Loading AppComponent content here ...</home>
+          </div>
+        </section>
+      </section>
+    </section>
+  </body>
+</html>
