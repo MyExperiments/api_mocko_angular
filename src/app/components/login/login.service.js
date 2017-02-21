@@ -9,23 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require('@angular/http');
-var home_component_1 = require('./components/home/home.component');
-var register_component_1 = require('./components/register/register.component');
-var login_component_1 = require('./components/login/login.component');
-var AppModule = (function () {
-    function AppModule() {
+require('rxjs/add/operator/map');
+var LoginService = (function () {
+    function LoginService(http) {
+        this.http = http;
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, http_1.HttpModule],
-            declarations: [home_component_1.HomeComponent, register_component_1.RegisterComponent, login_component_1.LoginComponent],
-            bootstrap: [home_component_1.HomeComponent]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    LoginService.prototype.login = function (email, password) {
+        return this.http.post('http://localhost:4000/users/sign_in.json', JSON.stringify({ user: { email: email, password: password } }))
+            .map(function (response) {
+            alert(2);
+            // login successful if there's a jwt token in the response
+            var user = response.json();
+            console.log(user);
+        });
+    };
+    LoginService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http])
+    ], LoginService);
+    return LoginService;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.LoginService = LoginService;
+//# sourceMappingURL=login.service.js.map
