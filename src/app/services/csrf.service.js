@@ -11,25 +11,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
-var LoginService = (function () {
-    function LoginService(http) {
+var CsrfService = (function () {
+    function CsrfService(http) {
         this.http = http;
     }
-    LoginService.prototype.login = function (email, password) {
-        // this.http.get('http://localhost:4000/frontend/api/csrf_tokens.json');
-        return this.http.post('http://localhost:4000/users/sign_in.json', { user: { email: email, password: password } })
+    CsrfService.prototype.setCsrfTokens = function () {
+        return this.http.get('http://localhost:4000/frontend/api/csrf_tokens.json')
             .map(function (response) {
-            alert(2);
-            // login successful if there's a jwt token in the response
-            var user = response.json();
-            console.log(user);
+            alert(1);
         });
     };
-    LoginService = __decorate([
+    CsrfService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], LoginService);
-    return LoginService;
+    ], CsrfService);
+    return CsrfService;
 }());
-exports.LoginService = LoginService;
-//# sourceMappingURL=login.service.js.map
+exports.CsrfService = CsrfService;
+//# sourceMappingURL=csrf.service.js.map

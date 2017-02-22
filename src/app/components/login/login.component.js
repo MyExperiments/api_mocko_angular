@@ -16,13 +16,10 @@ var LoginComponent = (function () {
         this._loginService = _loginService;
     }
     LoginComponent.prototype.login = function (event, email, password) {
-        var _this = this;
         event.preventDefault();
         this._loginService.login(email, password).subscribe(function (data) {
-            _this.router.navigate([_this.returnUrl]);
+            console.log(data);
         }, function (error) {
-            _this.alertService.error(error);
-            _this.loading = false;
         });
     };
     LoginComponent = __decorate([

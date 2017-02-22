@@ -5,11 +5,13 @@ import 'rxjs/add/operator/map'
 
 @Injectable()
 export class LoginService {
-	constructor(private http: Http) { }
+  constructor(private http: Http) { }
 
   login(email: string, password: string) {
-    return this.http.post('http://localhost:4000/users/sign_in.json', JSON.stringify({ user: { email: email, password: password } }))
+    // this.http.get('http://localhost:4000/frontend/api/csrf_tokens.json');
+    return this.http.post('http://localhost:4000/users/sign_in.json', { user: { email: email, password: password } })
       .map((response: Response) => {
+        alert(2);
         // login successful if there's a jwt token in the response
         let user = response.json();
         console.log(user);

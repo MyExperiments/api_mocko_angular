@@ -18,11 +18,10 @@ export class LoginComponent  {
     event.preventDefault();
     this._loginService.login(email, password).subscribe(
       data => {
-          this.router.navigate([this.returnUrl]);
+          console.log(data)
       },
       error => {
-          this.alertService.error(error);
-          this.loading = false;
+
       });
   }
 }

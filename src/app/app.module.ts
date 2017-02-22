@@ -12,4 +12,6 @@ import { LoginComponent }  from './components/login/login.component';
   bootstrap:    [ HomeComponent ]
 })
 
-export class AppModule { }
+export class AppModule {
+
+}
