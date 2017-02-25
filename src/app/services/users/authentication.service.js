@@ -16,7 +16,6 @@ var AuthenticationService = (function () {
         this.http = http;
     }
     AuthenticationService.prototype.login = function (email, password) {
-        // this.http.get('http://localhost:4000/frontend/api/csrf_tokens.json');
         return this.http.post('http://localhost:4000/users/sign_in.json', { user: { email: email, password: password } })
             .map(function (response) {
             return response.json();
@@ -42,12 +41,10 @@ var AuthenticationService = (function () {
     AuthenticationService.prototype.setCurrentUser = function (user) {
         localStorage.setItem('currentUser', JSON.stringify(user));
     };
-    AuthenticationService.prototype.handleLoginError = function (response) {
-        if (response.status == 401) {
-            var body = JSON.parse(response._body);
-            alert(body.error);
-        }
+    AuthenticationService.prototype.removeCurrentUser = function () {
+        localStorage.removeItem('currentUser');
     };
+    AuthenticationService.prototype.handleLoginError = function (response) { };
     AuthenticationService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])

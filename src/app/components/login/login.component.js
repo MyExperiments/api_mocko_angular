@@ -11,33 +11,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var authentication_service_1 = require('../../services/users/authentication.service');
+var api_exception_service_1 = require('../../services/api-exception.service');
 var LoginComponent = (function () {
-    function LoginComponent(_authenticationService, router) {
+    function LoginComponent(_authenticationService, _apiExceptionService, router) {
         this._authenticationService = _authenticationService;
+        this._apiExceptionService = _apiExceptionService;
         this.router = router;
         this._authenticationService = _authenticationService;
+        this._apiExceptionService = _apiExceptionService;
         this.router = router;
     }
     LoginComponent.prototype.login = function (event, email, password) {
         var _this = this;
         event.preventDefault();
         this._authenticationService.login(email, password).subscribe(function (response) {
-            if (response && response.authentication_token) {
+            if (response && response.authentication_token.length > 0) {
                 // store current user details in localstorage
                 _this._authenticationService.setCurrentUser(response);
                 _this.router.navigate(['/dashboard']);
             }
         }, function (error) {
-            _this._authenticationService.handleLoginError(error);
+            _this._apiExceptionService.catch(error);
         });
     };
     LoginComponent = __decorate([
         core_1.Component({
             selector: 'login',
             templateUrl: 'app/components/login/login-form.component.html',
-            providers: [authentication_service_1.AuthenticationService]
+            providers: [authentication_service_1.AuthenticationService, api_exception_service_1.ApiExceptionService]
         }), 
-        __metadata('design:paramtypes', [authentication_service_1.AuthenticationService, router_1.Router])
+        __metadata('design:paramtypes', [authentication_service_1.AuthenticationService, api_exception_service_1.ApiExceptionService, router_1.Router])
     ], LoginComponent);
     return LoginComponent;
 }());

@@ -9,15 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var apps_service_1 = require('../../services/apps.service');
+var api_exception_service_1 = require('../../services/api-exception.service');
+var http_client_service_1 = require('../../services/http-client.service');
 var DashboardComponent = (function () {
-    function DashboardComponent() {
+    function DashboardComponent(_appsService, _apiExceptionService) {
+        var _this = this;
+        this._appsService = _appsService;
+        this._apiExceptionService = _apiExceptionService;
+        this._appsService = _appsService;
+        this._apiExceptionService = _apiExceptionService;
+        this._appsService.getApps().subscribe(function (response) {
+            console.log(response);
+        }, function (error) {
+            _this._apiExceptionService.catch(error);
+        });
     }
     DashboardComponent = __decorate([
         core_1.Component({
             selector: 'dashboard',
-            templateUrl: 'app/components/dashboard/dashboard.component.html'
+            templateUrl: 'app/components/dashboard/dashboard.component.html',
+            providers: [apps_service_1.AppsService, api_exception_service_1.ApiExceptionService, http_client_service_1.HttpClientService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [apps_service_1.AppsService, api_exception_service_1.ApiExceptionService])
     ], DashboardComponent);
     return DashboardComponent;
 }());

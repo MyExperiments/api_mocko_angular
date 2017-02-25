@@ -9,16 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var authentication_service_1 = require('./users/authentication.service');
 var ApiExceptionService = (function () {
-    function ApiExceptionService() {
+    function ApiExceptionService(_authenticationService, _router) {
+        this._authenticationService = _authenticationService;
+        this._router = _router;
+        this._router = _router;
+        this._authenticationService = _authenticationService;
     }
-    ApiExceptionService.prototype.catchException = function (response) {
+    ApiExceptionService.prototype.catch = function (response) {
+        // Unauthorized Access - status code 401
+        var body = JSON.parse(response._body);
         if (response.status == 401) {
+            this._authenticationService.removeCurrentUser();
+            this._router.navigate(['/login']);
         }
     };
     ApiExceptionService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [authentication_service_1.AuthenticationService, router_1.Router])
     ], ApiExceptionService);
     return ApiExceptionService;
 }());
