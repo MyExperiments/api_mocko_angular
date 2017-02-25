@@ -9,26 +9,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var login_service_1 = require('../../services/users/login.service');
+var router_1 = require('@angular/router');
+var authentication_service_1 = require('../../services/users/authentication.service');
 var LoginComponent = (function () {
-    function LoginComponent(_loginService) {
-        this._loginService = _loginService;
-        this._loginService = _loginService;
+    function LoginComponent(_authenticationService, router) {
+        this._authenticationService = _authenticationService;
+        this.router = router;
+        this._authenticationService = _authenticationService;
+        this.router = router;
     }
     LoginComponent.prototype.login = function (event, email, password) {
+        var _this = this;
         event.preventDefault();
-        this._loginService.login(email, password).subscribe(function (data) {
-            console.log(data);
+        this._authenticationService.login(email, password).subscribe(function (response) {
+            if (response && response.authentication_token) {
+                // store current user details in localstorage
+                _this._authenticationService.setCurrentUser(response);
+                _this.router.navigate(['/dashboard']);
+            }
         }, function (error) {
+            _this._authenticationService.handleLoginError(error);
         });
     };
     LoginComponent = __decorate([
         core_1.Component({
             selector: 'login',
             templateUrl: 'app/components/login/login-form.component.html',
-            providers: [login_service_1.LoginService]
+            providers: [authentication_service_1.AuthenticationService]
         }), 
-        __metadata('design:paramtypes', [login_service_1.LoginService])
+        __metadata('design:paramtypes', [authentication_service_1.AuthenticationService, router_1.Router])
     ], LoginComponent);
     return LoginComponent;
 }());

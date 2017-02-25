@@ -1,27 +1,33 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { LoginService } from '../../services/users/login.service';
+import { AuthenticationService } from '../../services/users/authentication.service';
 
 @Component({
   selector: 'login',
   templateUrl: 'app/components/login/login-form.component.html',
-   providers: [ LoginService ]
+  providers: [ AuthenticationService ]
 })
 
 export class LoginComponent  {
 
-  constructor(private _loginService: LoginService) {
-    this._loginService = _loginService;
+  constructor(private _authenticationService: AuthenticationService, private router: Router) {
+    this._authenticationService = _authenticationService;
+    this.router = router;
   }
 
   login(event, email, password) {
     event.preventDefault();
-    this._loginService.login(email, password).subscribe(
-      data => {
-          console.log(data)
+    this._authenticationService.login(email, password).subscribe(
+      response => {
+        if (response && response.authentication_token) {
+          // store current user details in localstorage
+          this._authenticationService.setCurrentUser(response);
+          this.router.navigate(['/dashboard']);
+        }
       },
       error => {
-
+        this._authenticationService.handleLoginError(error);
       });
   }
 }

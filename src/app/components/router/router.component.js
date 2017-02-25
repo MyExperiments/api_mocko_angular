@@ -9,24 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
-require('rxjs/add/operator/map');
-var LoginService = (function () {
-    function LoginService(http) {
-        this.http = http;
+var RouterComponent = (function () {
+    function RouterComponent() {
     }
-    LoginService.prototype.login = function (email, password) {
-        // this.http.get('http://localhost:4000/frontend/api/csrf_tokens.json');
-        return this.http.post('http://localhost:4000/users/sign_in.json', { user: { email: email, password: password } })
-            .map(function (response) {
-            return response.json();
-        });
-    };
-    LoginService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], LoginService);
-    return LoginService;
+    RouterComponent = __decorate([
+        core_1.Component({
+            selector: 'router-component',
+            templateUrl: 'app/components/router/router.component.html'
+        }), 
+        __metadata('design:paramtypes', [])
+    ], RouterComponent);
+    return RouterComponent;
 }());
-exports.LoginService = LoginService;
-//# sourceMappingURL=login.service.js.map
+exports.RouterComponent = RouterComponent;
+//# sourceMappingURL=router.component.js.map

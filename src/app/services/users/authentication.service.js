@@ -11,22 +11,48 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
-var LoginService = (function () {
-    function LoginService(http) {
+var AuthenticationService = (function () {
+    function AuthenticationService(http) {
         this.http = http;
     }
-    LoginService.prototype.login = function (email, password) {
+    AuthenticationService.prototype.login = function (email, password) {
         // this.http.get('http://localhost:4000/frontend/api/csrf_tokens.json');
         return this.http.post('http://localhost:4000/users/sign_in.json', { user: { email: email, password: password } })
             .map(function (response) {
             return response.json();
         });
     };
-    LoginService = __decorate([
+    AuthenticationService.prototype.isSignedIn = function () {
+        if (this.getCurrentUser()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+    AuthenticationService.prototype.getCurrentUser = function () {
+        var currentUser = localStorage.getItem('currentUser');
+        if (currentUser) {
+            return JSON.parse(currentUser);
+        }
+        else {
+            return {};
+        }
+    };
+    AuthenticationService.prototype.setCurrentUser = function (user) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+    };
+    AuthenticationService.prototype.handleLoginError = function (response) {
+        if (response.status == 401) {
+            var body = JSON.parse(response._body);
+            alert(body.error);
+        }
+    };
+    AuthenticationService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], LoginService);
-    return LoginService;
+    ], AuthenticationService);
+    return AuthenticationService;
 }());
-exports.LoginService = LoginService;
-//# sourceMappingURL=login.service.js.map
+exports.AuthenticationService = AuthenticationService;
+//# sourceMappingURL=authentication.service.js.map

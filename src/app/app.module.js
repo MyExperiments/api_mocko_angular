@@ -12,12 +12,16 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require('@angular/http');
 var router_1 = require('@angular/router');
-var home_component_1 = require('./components/home/home.component');
+var router_component_1 = require('./components/router/router.component');
 var register_component_1 = require('./components/register/register.component');
 var login_component_1 = require('./components/login/login.component');
+var home_component_1 = require('./components/home/home.component');
+var dashboard_component_1 = require('./components/dashboard/dashboard.component');
 var login_register_links_component_1 = require('./components/login/login-register-links.component');
 var appRoutes = [
+    { path: '', component: home_component_1.HomeComponent },
     { path: 'login', component: login_component_1.LoginComponent },
+    { path: 'dashboard', component: dashboard_component_1.DashboardComponent }
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -30,9 +34,10 @@ var AppModule = (function () {
                 http_1.HttpModule
             ],
             declarations: [
-                home_component_1.HomeComponent, register_component_1.RegisterComponent, login_component_1.LoginComponent, login_register_links_component_1.LoginRegisterLinksComponent
+                router_component_1.RouterComponent, register_component_1.RegisterComponent, login_component_1.LoginComponent, login_register_links_component_1.LoginRegisterLinksComponent,
+                home_component_1.HomeComponent, dashboard_component_1.DashboardComponent
             ],
-            bootstrap: [home_component_1.HomeComponent, login_register_links_component_1.LoginRegisterLinksComponent]
+            bootstrap: [router_component_1.RouterComponent, login_register_links_component_1.LoginRegisterLinksComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);
