@@ -22,7 +22,7 @@ var AuthenticationService = (function () {
         });
     };
     AuthenticationService.prototype.isSignedIn = function () {
-        if (this.getCurrentUser()) {
+        if (Object.getOwnPropertyNames(this.getCurrentUser()).length > 0) {
             return true;
         }
         else {

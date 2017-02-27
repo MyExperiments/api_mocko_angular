@@ -15,7 +15,7 @@ export class AuthenticationService {
   }
 
   isSignedIn() {
-    if (this.getCurrentUser()) {
+    if (Object.getOwnPropertyNames(this.getCurrentUser()).length > 0) {
       return true;
     } else {
       return false;

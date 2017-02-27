@@ -10,23 +10,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var authentication_service_1 = require('../../services/users/authentication.service');
-var LoginRegisterLinksComponent = (function () {
-    function LoginRegisterLinksComponent(_authenticationService) {
-        this._authenticationService = _authenticationService;
+var SidebarComponent = (function () {
+    function SidebarComponent(_authenticationService) {
         this.isSignedIn = false;
         this._authenticationService = _authenticationService;
         this.isSignedIn = this._authenticationService.isSignedIn();
-        this.currentUser = this._authenticationService.getCurrentUser();
     }
-    LoginRegisterLinksComponent = __decorate([
+    SidebarComponent = __decorate([
         core_1.Component({
-            selector: 'login-register-links',
-            templateUrl: 'app/components/login/login-register.component.html',
+            selector: 'sidebar',
+            templateUrl: 'app/components/sidebar/sidebar.component.html',
             providers: [authentication_service_1.AuthenticationService]
         }), 
         __metadata('design:paramtypes', [authentication_service_1.AuthenticationService])
-    ], LoginRegisterLinksComponent);
-    return LoginRegisterLinksComponent;
+    ], SidebarComponent);
+    return SidebarComponent;
 }());
-exports.LoginRegisterLinksComponent = LoginRegisterLinksComponent;
-//# sourceMappingURL=login-register-links.component.js.map
+exports.SidebarComponent = SidebarComponent;
+//# sourceMappingURL=sidebar.component.js.map

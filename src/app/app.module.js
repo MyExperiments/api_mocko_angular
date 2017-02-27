@@ -16,6 +16,7 @@ var router_component_1 = require('./components/router/router.component');
 var register_component_1 = require('./components/register/register.component');
 var login_component_1 = require('./components/login/login.component');
 var home_component_1 = require('./components/home/home.component');
+var sidebar_component_1 = require('./components/sidebar/sidebar.component');
 var dashboard_component_1 = require('./components/dashboard/dashboard.component');
 var login_register_links_component_1 = require('./components/login/login-register-links.component');
 var api_exception_service_1 = require('./services/api-exception.service');
@@ -38,9 +39,9 @@ var AppModule = (function () {
             ],
             declarations: [
                 router_component_1.RouterComponent, register_component_1.RegisterComponent, login_component_1.LoginComponent, login_register_links_component_1.LoginRegisterLinksComponent,
-                home_component_1.HomeComponent, dashboard_component_1.DashboardComponent
+                home_component_1.HomeComponent, dashboard_component_1.DashboardComponent, sidebar_component_1.SidebarComponent
             ],
-            bootstrap: [router_component_1.RouterComponent, login_register_links_component_1.LoginRegisterLinksComponent],
+            bootstrap: [router_component_1.RouterComponent, login_register_links_component_1.LoginRegisterLinksComponent, sidebar_component_1.SidebarComponent],
             providers: [
                 http_client_service_1.HttpClientService, api_exception_service_1.ApiExceptionService, authentication_service_1.AuthenticationService
             ]

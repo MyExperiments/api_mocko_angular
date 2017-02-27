@@ -4,10 +4,10 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { RouterComponent }  from './components/router/router.component';
-import { ToasterComponent } from './components/toaster/toaster.component';
 import { RegisterComponent }  from './components/register/register.component';
 import { LoginComponent }  from './components/login/login.component';
 import { HomeComponent }  from './components/home/home.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardComponent }  from './components/dashboard/dashboard.component';
 import { LoginRegisterLinksComponent } from './components/login/login-register-links.component';
 
@@ -29,9 +29,9 @@ const appRoutes: Routes = [
   ],
   declarations: [
   	RouterComponent, RegisterComponent, LoginComponent, LoginRegisterLinksComponent,
-    HomeComponent, DashboardComponent
+    HomeComponent, DashboardComponent, SidebarComponent
   ],
-  bootstrap: [ RouterComponent, LoginRegisterLinksComponent ],
+  bootstrap: [ RouterComponent, LoginRegisterLinksComponent, SidebarComponent ],
   providers: [
     HttpClientService, ApiExceptionService, AuthenticationService
   ]
