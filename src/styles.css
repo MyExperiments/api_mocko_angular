@@ -34,7 +34,7 @@ a.logo {
 }
 
 #main-content {
-  margin-left: 180px;
+  /*margin-left: 180px;*/
 }
 
 #sidebar {
@@ -60,7 +60,7 @@ ul.sidebar-menu li {
   list-style: none;
 }
 
-ul.sidebar-menu li.active a, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {
+ul.sidebar-menu li.active a, a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {
   background: #2e3b46;
   color: #fff;
   display: block;

@@ -9,24 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
 var authentication_service_1 = require('../../services/users/authentication.service');
-var SidebarComponent = (function () {
-    function SidebarComponent(router, _authenticationService) {
-        this.router = router;
+var HeaderComponent = (function () {
+    function HeaderComponent(_authenticationService) {
+        this._authenticationService = _authenticationService;
         this.isSignedIn = false;
         this._authenticationService = _authenticationService;
         this.isSignedIn = this._authenticationService.isSignedIn();
+        this.currentUser = this._authenticationService.getCurrentUser();
     }
-    SidebarComponent = __decorate([
+    HeaderComponent = __decorate([
         core_1.Component({
-            selector: 'sidebar',
-            templateUrl: 'app/components/sidebar/sidebar.component.html',
+            selector: 'header-component',
+            templateUrl: 'app/components/header/header.component.html',
             providers: [authentication_service_1.AuthenticationService]
         }), 
-        __metadata('design:paramtypes', [router_1.Router, authentication_service_1.AuthenticationService])
-    ], SidebarComponent);
-    return SidebarComponent;
+        __metadata('design:paramtypes', [authentication_service_1.AuthenticationService])
+    ], HeaderComponent);
+    return HeaderComponent;
 }());
-exports.SidebarComponent = SidebarComponent;
-//# sourceMappingURL=sidebar.component.js.map
+exports.HeaderComponent = HeaderComponent;
+//# sourceMappingURL=header.component.js.map

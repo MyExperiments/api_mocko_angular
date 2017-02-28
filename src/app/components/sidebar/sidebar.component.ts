@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AuthenticationService } from '../../services/users/authentication.service'
 
@@ -11,7 +12,8 @@ import { AuthenticationService } from '../../services/users/authentication.servi
 export class SidebarComponent  {
   private _authenticationService: AuthenticationService;
   private isSignedIn = false;
-  constructor(_authenticationService: AuthenticationService) {
+
+  constructor(private router: Router, _authenticationService: AuthenticationService) {
     this._authenticationService = _authenticationService;
     this.isSignedIn = this._authenticationService.isSignedIn();
   }

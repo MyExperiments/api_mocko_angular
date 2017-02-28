@@ -9,7 +9,7 @@ import { LoginComponent }  from './components/login/login.component';
 import { HomeComponent }  from './components/home/home.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardComponent }  from './components/dashboard/dashboard.component';
-import { LoginRegisterLinksComponent } from './components/login/login-register-links.component';
+import { HeaderComponent } from './components/header/header.component';
 
 import { ApiExceptionService } from './services/api-exception.service';
 import { HttpClientService } from './services/http-client.service';
@@ -28,10 +28,10 @@ const appRoutes: Routes = [
   	HttpModule
   ],
   declarations: [
-  	RouterComponent, RegisterComponent, LoginComponent, LoginRegisterLinksComponent,
-    HomeComponent, DashboardComponent, SidebarComponent
+  	RouterComponent, RegisterComponent, LoginComponent, HeaderComponent,
+  	HomeComponent, DashboardComponent, SidebarComponent
   ],
-  bootstrap: [ RouterComponent, LoginRegisterLinksComponent, SidebarComponent ],
+  bootstrap: [ RouterComponent, HeaderComponent, SidebarComponent ],
   providers: [
     HttpClientService, ApiExceptionService, AuthenticationService
   ]

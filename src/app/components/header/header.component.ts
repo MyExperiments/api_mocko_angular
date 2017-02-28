@@ -3,14 +3,13 @@ import { Component } from '@angular/core';
 import { AuthenticationService } from '../../services/users/authentication.service';
 
 @Component({
-  selector: 'login-register-links',
-  templateUrl: 'app/components/login/login-register.component.html',
+  selector: 'header-component',
+  templateUrl: 'app/components/header/header.component.html',
   providers: [ AuthenticationService ]
 })
 
-export class LoginRegisterLinksComponent  {
+export class HeaderComponent  {
   private isSignedIn = false;
-  private _authenticationService;
   private currentUser;
   constructor(private _authenticationService: AuthenticationService) {
     this._authenticationService = _authenticationService;
