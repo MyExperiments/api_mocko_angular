@@ -16,4 +16,11 @@ export class AppsService {
       return response.json();
     });
   }
+
+  createApp(params) {
+    return this._httpClientService.post('http://localhost:4000/frontend/api/apps.json', params, true)
+    .map((response: Response) => {
+      return response.json();
+    });
+  }
 }

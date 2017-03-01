@@ -25,7 +25,7 @@ export class LoginComponent  {
         if (response && response.authentication_token.length > 0) {
           // store current user details in localstorage
           this._authenticationService.setCurrentUser(response);
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/apps']);
         }
       },
       error => {

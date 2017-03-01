@@ -29,7 +29,17 @@ export class HttpClientService {
     }
   }
 
-  post(url: string, data: any) {
-
+  post(url: string, data: any, withAuthHeader: boolean) {
+    if(withAuthHeader) {
+      alert(222);
+      let headers = new Headers();
+      this.authorizationHeader(headers);
+      return this.http.post(url, data, {
+        headers: headers
+      });
+    }
+    else {
+      return this.http.post(url, data);
+    }
   }
 }

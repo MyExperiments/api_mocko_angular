@@ -22,6 +22,12 @@ var AppsService = (function () {
             return response.json();
         });
     };
+    AppsService.prototype.createApp = function (params) {
+        return this._httpClientService.post('http://localhost:4000/frontend/api/apps.json', params, true)
+            .map(function (response) {
+            return response.json();
+        });
+    };
     AppsService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_client_service_1.HttpClientService])

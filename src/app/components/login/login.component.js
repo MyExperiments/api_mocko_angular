@@ -28,7 +28,7 @@ var LoginComponent = (function () {
             if (response && response.authentication_token.length > 0) {
                 // store current user details in localstorage
                 _this._authenticationService.setCurrentUser(response);
-                _this.router.navigate(['/dashboard']);
+                _this.router.navigate(['/apps']);
             }
         }, function (error) {
             _this._apiExceptionService.catch(error);

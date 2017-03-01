@@ -8,7 +8,8 @@ import { RegisterComponent }  from './components/register/register.component';
 import { LoginComponent }  from './components/login/login.component';
 import { HomeComponent }  from './components/home/home.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { DashboardComponent }  from './components/dashboard/dashboard.component';
+import { AppComponent }  from './components/apps/apps.component';
+import { NewAppComponent }  from './components/apps/apps.new.component';
 import { HeaderComponent } from './components/header/header.component';
 
 import { ApiExceptionService } from './services/api-exception.service';
@@ -18,7 +19,8 @@ import { AuthenticationService } from './services/users/authentication.service';
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent }
+  { path: 'apps', component: AppComponent },
+  { path: 'apps/new', component: NewAppComponent }
 ];
 
 @NgModule({
@@ -28,8 +30,7 @@ const appRoutes: Routes = [
   	HttpModule
   ],
   declarations: [
-  	RouterComponent, RegisterComponent, LoginComponent, HeaderComponent,
-  	HomeComponent, DashboardComponent, SidebarComponent
+  	RouterComponent, HeaderComponent, SidebarComponent, RegisterComponent, LoginComponent, HomeComponent, AppComponent, NewAppComponent
   ],
   bootstrap: [ RouterComponent, HeaderComponent, SidebarComponent ],
   providers: [

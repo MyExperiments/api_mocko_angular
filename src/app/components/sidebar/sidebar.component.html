@@ -1,20 +1,14 @@
 <div id="sidebar" class="nav-collapse" tabindex="5000" style="overflow: hidden; outline: none;" *ngIf="isSignedIn">
   <!-- sidebar menu start-->
   <ul class="sidebar-menu">
-    <li>
-      <a routerLink="dashboard">
-        <i class="icon_house_alt"></i>
-        <span>Dashboard</span>
-      </a>
-    </li>
-    <li>
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
       <a routerLink="">
         <i class="icon_house_alt"></i>
         <span>Home</span>
       </a>
     </li>
-    <li>
-      <a href="#apps">
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <a routerLink="apps">
         <i class="icon_house_alt"></i>
         <span>Apps</span>
       </a>

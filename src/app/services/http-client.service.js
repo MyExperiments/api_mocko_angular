@@ -35,7 +35,18 @@ var HttpClientService = (function () {
             return this.http.get(url);
         }
     };
-    HttpClientService.prototype.post = function (url, data) {
+    HttpClientService.prototype.post = function (url, data, withAuthHeader) {
+        if (withAuthHeader) {
+            alert(222);
+            var headers = new http_1.Headers();
+            this.authorizationHeader(headers);
+            return this.http.post(url, data, {
+                headers: headers
+            });
+        }
+        else {
+            return this.http.post(url, data);
+        }
     };
     HttpClientService = __decorate([
         core_1.Injectable(), 
