@@ -9,11 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var apps_service_1 = require('../../services/apps.service');
 var api_exception_service_1 = require('../../services/api-exception.service');
 var http_client_service_1 = require('../../services/http-client.service');
 var NewAppComponent = (function () {
-    function NewAppComponent(_appsService, _apiExceptionService) {
+    function NewAppComponent(_router, _appsService, _apiExceptionService) {
+        this._router = _router;
         this._appsService = _appsService;
         this._apiExceptionService = _apiExceptionService;
         this._appsService = _appsService;
@@ -28,18 +30,20 @@ var NewAppComponent = (function () {
             }
         };
         this._appsService.createApp(params).subscribe(function (response) {
-            _this.apps = response.apps;
+            if (response.success) {
+                _this._router.navigate(['/apps']);
+            }
         }, function (error) {
             _this._apiExceptionService.catch(error);
         });
     };
     NewAppComponent = __decorate([
         core_1.Component({
-            selector: 'apps',
+            selector: 'new-app',
             templateUrl: 'app/components/apps/apps.new.component.html',
             providers: [apps_service_1.AppsService, api_exception_service_1.ApiExceptionService, http_client_service_1.HttpClientService]
         }), 
-        __metadata('design:paramtypes', [apps_service_1.AppsService, api_exception_service_1.ApiExceptionService])
+        __metadata('design:paramtypes', [router_1.Router, apps_service_1.AppsService, api_exception_service_1.ApiExceptionService])
     ], NewAppComponent);
     return NewAppComponent;
 }());

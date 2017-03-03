@@ -10,8 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
+var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
 var router_1 = require('@angular/router');
+var ng2_pagination_1 = require('ng2-pagination');
+var angular2_datatable_1 = require('angular2-datatable');
 var router_component_1 = require('./components/router/router.component');
 var register_component_1 = require('./components/register/register.component');
 var login_component_1 = require('./components/login/login.component');
@@ -23,6 +26,7 @@ var header_component_1 = require('./components/header/header.component');
 var api_exception_service_1 = require('./services/api-exception.service');
 var http_client_service_1 = require('./services/http-client.service');
 var authentication_service_1 = require('./services/users/authentication.service');
+var data_filter_pipe_1 = require('./pipes/data-filter.pipe');
 var appRoutes = [
     { path: '', component: home_component_1.HomeComponent },
     { path: 'login', component: login_component_1.LoginComponent },
@@ -37,10 +41,15 @@ var AppModule = (function () {
             imports: [
                 router_1.RouterModule.forRoot(appRoutes),
                 platform_browser_1.BrowserModule,
-                http_1.HttpModule
+                http_1.HttpModule,
+                forms_1.FormsModule,
+                ng2_pagination_1.Ng2PaginationModule,
+                angular2_datatable_1.DataTableModule
             ],
             declarations: [
-                router_component_1.RouterComponent, header_component_1.HeaderComponent, sidebar_component_1.SidebarComponent, register_component_1.RegisterComponent, login_component_1.LoginComponent, home_component_1.HomeComponent, apps_component_1.AppComponent, apps_new_component_1.NewAppComponent
+                router_component_1.RouterComponent, header_component_1.HeaderComponent, sidebar_component_1.SidebarComponent, register_component_1.RegisterComponent, login_component_1.LoginComponent, home_component_1.HomeComponent, apps_component_1.AppComponent, apps_new_component_1.NewAppComponent,
+                // Pipes below
+                data_filter_pipe_1.DataFilterPipe
             ],
             bootstrap: [router_component_1.RouterComponent, header_component_1.HeaderComponent, sidebar_component_1.SidebarComponent],
             providers: [

@@ -58,6 +58,7 @@ ul.sidebar-menu, ul.sidebar-menu li ul.sub {
 ul.sidebar-menu li {
   line-height: 20px !important;
   list-style: none;
+  text-align: center;
 }
 
 ul.sidebar-menu li.active a, a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {

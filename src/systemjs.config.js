@@ -26,7 +26,10 @@
       // other libraries
       'rxjs':                      'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
-      'angular2-toaster': 'npm:angular2-toaster/bundles/angular2-toaster.umd.js'
+      'angular2-toaster': 'npm:angular2-toaster/bundles/angular2-toaster.umd.js',
+      'ng2-pagination': 'npm:ng2-pagination/dist',
+      'angular2-datatable': 'npm:angular2-datatable',
+      'lodash': 'npm:lodash/lodash.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -34,6 +37,13 @@
         defaultExtension: 'js'
       },
       rxjs: {
+        defaultExtension: 'js'
+      },
+      'ng2-pagination': {
+        main: 'ng2-pagination.js', defaultExtension: 'js'
+      },
+      'angular2-datatable': {
+        main: 'index.js',
         defaultExtension: 'js'
       }
     }

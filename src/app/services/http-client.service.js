@@ -37,7 +37,6 @@ var HttpClientService = (function () {
     };
     HttpClientService.prototype.post = function (url, data, withAuthHeader) {
         if (withAuthHeader) {
-            alert(222);
             var headers = new http_1.Headers();
             this.authorizationHeader(headers);
             return this.http.post(url, data, {
