@@ -8,31 +8,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-require('rxjs/add/operator/map');
-var http_client_service_1 = require('./http-client.service');
+var core_1 = require("@angular/core");
+require("rxjs/add/operator/map");
+var http_client_service_1 = require("./http-client.service");
 var AppsService = (function () {
     function AppsService(_httpClientService) {
         this._httpClientService = _httpClientService;
         this._httpClientService = _httpClientService;
     }
-    AppsService.prototype.getApps = function () {
-        return this._httpClientService.get('http://localhost:4000/frontend/api/apps.json', true)
+    AppsService.prototype.getApis = function () {
+        return this._httpClientService.get('http://localhost:4000/frontend/api/mock_apis.json', true)
             .map(function (response) {
             return response.json();
         });
     };
-    AppsService.prototype.createApp = function (params) {
-        return this._httpClientService.post('http://localhost:4000/frontend/api/apps.json', params, true)
+    AppsService.prototype.createApi = function (params) {
+        return this._httpClientService.post('http://localhost:4000/frontend/api/mock_apis.json', params, true)
             .map(function (response) {
             return response.json();
         });
     };
-    AppsService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_client_service_1.HttpClientService])
-    ], AppsService);
     return AppsService;
 }());
+AppsService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_client_service_1.HttpClientService])
+], AppsService);
 exports.AppsService = AppsService;
 //# sourceMappingURL=apps.service.js.map

@@ -1,5 +1,5 @@
-import * as _ from "lodash";
 import { Pipe, PipeTransform } from "@angular/core";
+import * as _ from "lodash";
 
 @Pipe({
   name: "dataFilter"
@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from "@angular/core";
 export class DataFilterPipe implements PipeTransform {
   transform(array: any[], query: string, attribute: string): any {
     if (query) {
-      return _.filter(array, row=>row[attribute].indexOf(query) > -1);
+      return _.filter(array, row=> _.lowerCase(row[attribute]).indexOf(_.lowerCase(query)) > -1);
     }
     return array;
   }

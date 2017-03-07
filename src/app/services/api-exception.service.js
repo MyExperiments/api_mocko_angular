@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var authentication_service_1 = require('./users/authentication.service');
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var authentication_service_1 = require("./users/authentication.service");
 var ApiExceptionService = (function () {
     function ApiExceptionService(_authenticationService, _router) {
         this._authenticationService = _authenticationService;
@@ -26,11 +26,11 @@ var ApiExceptionService = (function () {
             this._router.navigate(['/login']);
         }
     };
-    ApiExceptionService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [authentication_service_1.AuthenticationService, router_1.Router])
-    ], ApiExceptionService);
     return ApiExceptionService;
 }());
+ApiExceptionService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [authentication_service_1.AuthenticationService, router_1.Router])
+], ApiExceptionService);
 exports.ApiExceptionService = ApiExceptionService;
 //# sourceMappingURL=api-exception.service.js.map

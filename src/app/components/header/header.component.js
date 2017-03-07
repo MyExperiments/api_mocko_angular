@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var authentication_service_1 = require('../../services/users/authentication.service');
+var core_1 = require("@angular/core");
+var authentication_service_1 = require("../../services/users/authentication.service");
 var HeaderComponent = (function () {
     function HeaderComponent(_authenticationService) {
         this._authenticationService = _authenticationService;
@@ -18,15 +18,15 @@ var HeaderComponent = (function () {
         this.isSignedIn = this._authenticationService.isSignedIn();
         this.currentUser = this._authenticationService.getCurrentUser();
     }
-    HeaderComponent = __decorate([
-        core_1.Component({
-            selector: 'header-component',
-            templateUrl: 'app/components/header/header.component.html',
-            providers: [authentication_service_1.AuthenticationService]
-        }), 
-        __metadata('design:paramtypes', [authentication_service_1.AuthenticationService])
-    ], HeaderComponent);
     return HeaderComponent;
 }());
+HeaderComponent = __decorate([
+    core_1.Component({
+        selector: 'header-component',
+        templateUrl: 'app/components/header/header.component.html',
+        providers: [authentication_service_1.AuthenticationService]
+    }),
+    __metadata("design:paramtypes", [authentication_service_1.AuthenticationService])
+], HeaderComponent);
 exports.HeaderComponent = HeaderComponent;
 //# sourceMappingURL=header.component.js.map

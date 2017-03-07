@@ -11,8 +11,8 @@ import { RegisterComponent }  from './components/register/register.component';
 import { LoginComponent }  from './components/login/login.component';
 import { HomeComponent }  from './components/home/home.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { AppComponent }  from './components/apps/apps.component';
-import { NewAppComponent }  from './components/apps/apps.new.component';
+import { ApiComponent }  from './components/apis/apis.component';
+import { NewApiComponent }  from './components/apis/apis.new.component';
 import { HeaderComponent } from './components/header/header.component';
 
 import { ApiExceptionService } from './services/api-exception.service';
@@ -24,8 +24,8 @@ import { DataFilterPipe } from './pipes/data-filter.pipe'
 const appRoutes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'login', component: LoginComponent },
-  { path: 'apps', component: AppComponent },
-  { path: 'apps/new', component: NewAppComponent }
+  { path: 'apis', component: ApiComponent },
+  { path: 'apis/new', component: NewApiComponent }
 ];
 
 @NgModule({
@@ -38,7 +38,7 @@ const appRoutes: Routes = [
     DataTableModule
   ],
   declarations: [
-  	RouterComponent, HeaderComponent, SidebarComponent, RegisterComponent, LoginComponent, HomeComponent, AppComponent, NewAppComponent,
+  	RouterComponent, HeaderComponent, SidebarComponent, RegisterComponent, LoginComponent, HomeComponent, ApiComponent, NewApiComponent,
     // Pipes below
     DataFilterPipe
   ],

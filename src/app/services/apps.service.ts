@@ -10,15 +10,15 @@ export class AppsService {
     this._httpClientService = _httpClientService
   }
 
-  getApps() {
-    return this._httpClientService.get('http://localhost:4000/frontend/api/apps.json', true)
+  getApis() {
+    return this._httpClientService.get('http://localhost:4000/frontend/api/mock_apis.json', true)
     .map((response: Response) => {
       return response.json();
     });
   }
 
-  createApp(params) {
-    return this._httpClientService.post('http://localhost:4000/frontend/api/apps.json', params, true)
+  createApi(params) {
+    return this._httpClientService.post('http://localhost:4000/frontend/api/mock_apis.json', params, true)
     .map((response: Response) => {
       return response.json();
     });

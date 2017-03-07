@@ -3,7 +3,7 @@
       <h1><span>Apps</span></h1>
     </div>
   <div class="row">
-    <div class="col-xs-6"></div>
+    <div class="col-xs-4"></div>
     <div class="col-xs-2">
       <label class="label-control pull-left m-r-20">Rows on page</label>
       <select class="form-control input-sm" [(ngModel)]="rowsOnPage">
@@ -26,9 +26,15 @@
         <option ngValue="desc">Descending</option>
       </select>
     </div>
+    <div class="col-xs-2">
+      <a routerLink="/apis/new">
+        <i class="icon_house_alt"></i>
+        <span>New Api</span>
+      </a>
+    </div>
   </div>
   <div class="panel panel-default">
-    <table class="table table-striped" [mfData]="apps" #mf="mfDataTable"  [mfRowsOnPage]="rowsOnPage"  [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+    <table class="table table-striped" [mfData]="apis" #mf="mfDataTable"  [mfRowsOnPage]="rowsOnPage"  [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
       <thead>
         <tr>
           <th>ID</th>
@@ -36,7 +42,10 @@
             Title
           </th>
           <th>
-            App Token
+            Response
+          </th>
+          <th>
+            Api Token
           </th>
         </tr>
         <tr>
@@ -44,16 +53,18 @@
           <th>
             <input class="form-control" [(ngModel)]="titleFilter" (ngModelChange)="filter($event)" placeholder="Search By Title"/>
           </th>
+          <th></th>
           <th>
             <input class="form-control" [(ngModel)]="tokenFilter" (ngModelChange)="filter($event)" placeholder="Search By Token"/>
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let app of mf.data">
-            <td>{{ app.id }}</td>
-            <td>{{ app.title }}</td>
-            <td>{{ app.app_token }}</td>
+        <tr *ngFor="let api of mf.data">
+            <td>{{ api.id }}</td>
+            <td>{{ api.title }}</td>
+            <td>{{ api.api_response }}</td>
+            <td>{{ api.api_token }}</td>
             <!-- <td>
                 <button (click)="remove(item)" class="btn btn-danger">x</button>
             </td> -->

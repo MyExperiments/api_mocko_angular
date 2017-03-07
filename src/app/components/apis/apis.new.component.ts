@@ -6,25 +6,27 @@ import { ApiExceptionService } from '../../services/api-exception.service';
 import { HttpClientService } from '../../services/http-client.service';
 
 @Component({
-  selector: 'new-app',
-  templateUrl: 'app/components/apps/apps.new.component.html',
+  selector: 'new-api',
+  templateUrl: 'app/components/apis/apis.new.component.html',
   providers: [ AppsService, ApiExceptionService, HttpClientService ]
 })
 
-export class NewAppComponent {
+export class NewApiComponent {
   constructor(private _router: Router, private _appsService: AppsService, private _apiExceptionService: ApiExceptionService) {
     this._appsService = _appsService;
     this._apiExceptionService = _apiExceptionService;
   }
 
-  createApp(event, appName) {
+  createApp(event, apiName, appName, response) {
     event.preventDefault();
     let params = {
-      "app": {
-        "title": appName
+      "mock_api": {
+        "title": apiName,
+        "app": appName,
+        "api_response": response
       }
     }
-    this._appsService.createApp(params).subscribe(
+    this._appsService.createApi(params).subscribe(
       response => {
         if(response.success) {
           this._router.navigate(['/apps']);

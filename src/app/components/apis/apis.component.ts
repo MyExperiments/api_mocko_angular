@@ -7,14 +7,14 @@ import { HttpClientService } from '../../services/http-client.service';
 import { DataFilterPipe } from '../../pipes/data-filter.pipe';
 
 @Component({
-  selector: 'apps',
-   pipes: [ DataFilterPipe ],
-  templateUrl: 'app/components/apps/apps.component.html',
+  selector: 'apis',
+  templateUrl: 'app/components/apis/apis.component.html',
   providers: [ AppsService, ApiExceptionService, HttpClientService ]
 })
 
-export class AppComponent  {
-  private apps: any, allApps: any;
+export class ApiComponent  {
+  private apis: any
+  private allApis: any;
   private rowsOnPage = 5;
   private sortBy = 'title';
   private sortOrder = 'asc';
@@ -24,10 +24,11 @@ export class AppComponent  {
   constructor(private _appsService: AppsService, private _apiExceptionService: ApiExceptionService) {
     this._appsService = _appsService;
     this._apiExceptionService = _apiExceptionService;
-    this._appsService.getApps().subscribe(
+    this._appsService.getApis().subscribe(
       response => {
-        this.apps = response.apps;
-        this.allApps = this.apps;
+        console.log(response);
+        this.apis = response.apis;
+        this.allApis = this.apis;
       },
       error => {
         this._apiExceptionService.catch(error);
@@ -37,12 +38,12 @@ export class AppComponent  {
 
   filter(event) {
     let filterPipe = new DataFilterPipe();
-    this.apps = this.allApps;
+    this.apis = this.allApis;
     if (this.titleFilter) {
-      this.apps = filterPipe.transform(this.apps, this.titleFilter, 'title');
+      this.apis = filterPipe.transform(this.apis, this.titleFilter, 'title');
     }
     if (this.tokenFilter) {
-      this.apps = filterPipe.transform(this.apps, this.tokenFilter, 'app_token');
+      this.apis = filterPipe.transform(this.apis, this.tokenFilter, 'api_token');
     }
   }
 }

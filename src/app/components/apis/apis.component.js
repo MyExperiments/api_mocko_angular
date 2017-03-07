@@ -13,8 +13,8 @@ var apps_service_1 = require("../../services/apps.service");
 var api_exception_service_1 = require("../../services/api-exception.service");
 var http_client_service_1 = require("../../services/http-client.service");
 var data_filter_pipe_1 = require("../../pipes/data-filter.pipe");
-var AppComponent = (function () {
-    function AppComponent(_appsService, _apiExceptionService) {
+var ApiComponent = (function () {
+    function ApiComponent(_appsService, _apiExceptionService) {
         var _this = this;
         this._appsService = _appsService;
         this._apiExceptionService = _apiExceptionService;
@@ -31,7 +31,7 @@ var AppComponent = (function () {
             _this._apiExceptionService.catch(error);
         });
     }
-    AppComponent.prototype.filter = function (event) {
+    ApiComponent.prototype.filter = function (event) {
         var filterPipe = new data_filter_pipe_1.DataFilterPipe();
         this.apis = this.allApis;
         if (this.titleFilter) {
@@ -41,15 +41,15 @@ var AppComponent = (function () {
             this.apis = filterPipe.transform(this.apis, this.tokenFilter, 'api_token');
         }
     };
-    return AppComponent;
+    return ApiComponent;
 }());
-AppComponent = __decorate([
+ApiComponent = __decorate([
     core_1.Component({
-        selector: 'apps',
-        templateUrl: 'app/components/apps/apps.component.html',
+        selector: 'apis',
+        templateUrl: 'app/components/apis/apis.component.html',
         providers: [apps_service_1.AppsService, api_exception_service_1.ApiExceptionService, http_client_service_1.HttpClientService]
     }),
     __metadata("design:paramtypes", [apps_service_1.AppsService, api_exception_service_1.ApiExceptionService])
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=apps.component.js.map
+], ApiComponent);
+exports.ApiComponent = ApiComponent;
+//# sourceMappingURL=apis.component.js.map

@@ -9,47 +9,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var apps_service_1 = require("../../services/apps.service");
 var api_exception_service_1 = require("../../services/api-exception.service");
 var http_client_service_1 = require("../../services/http-client.service");
-var data_filter_pipe_1 = require("../../pipes/data-filter.pipe");
-var AppComponent = (function () {
-    function AppComponent(_appsService, _apiExceptionService) {
+var NewApiComponent = (function () {
+    function NewApiComponent(_router, _appsService, _apiExceptionService) {
+        this._router = _router;
+        this._appsService = _appsService;
+        this._apiExceptionService = _apiExceptionService;
+        this._appsService = _appsService;
+        this._apiExceptionService = _apiExceptionService;
+    }
+    NewApiComponent.prototype.createApp = function (event, apiName, appName, response) {
         var _this = this;
-        this._appsService = _appsService;
-        this._apiExceptionService = _apiExceptionService;
-        this.rowsOnPage = 5;
-        this.sortBy = 'title';
-        this.sortOrder = 'asc';
-        this._appsService = _appsService;
-        this._apiExceptionService = _apiExceptionService;
-        this._appsService.getApis().subscribe(function (response) {
-            console.log(response);
-            _this.apis = response.apis;
-            _this.allApis = _this.apis;
+        event.preventDefault();
+        var params = {
+            "mock_api": {
+                "title": apiName,
+                "app": appName,
+                "api_response": response
+            }
+        };
+        this._appsService.createApi(params).subscribe(function (response) {
+            if (response.success) {
+                _this._router.navigate(['/apps']);
+            }
         }, function (error) {
             _this._apiExceptionService.catch(error);
         });
-    }
-    AppComponent.prototype.filter = function (event) {
-        var filterPipe = new data_filter_pipe_1.DataFilterPipe();
-        this.apis = this.allApis;
-        if (this.titleFilter) {
-            this.apis = filterPipe.transform(this.apis, this.titleFilter, 'title');
-        }
-        if (this.tokenFilter) {
-            this.apis = filterPipe.transform(this.apis, this.tokenFilter, 'api_token');
-        }
     };
-    return AppComponent;
+    return NewApiComponent;
 }());
-AppComponent = __decorate([
+NewApiComponent = __decorate([
     core_1.Component({
-        selector: 'apps',
-        templateUrl: 'app/components/apps/apps.component.html',
+        selector: 'new-api',
+        templateUrl: 'app/components/apis/apis.new.component.html',
         providers: [apps_service_1.AppsService, api_exception_service_1.ApiExceptionService, http_client_service_1.HttpClientService]
     }),
-    __metadata("design:paramtypes", [apps_service_1.AppsService, api_exception_service_1.ApiExceptionService])
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=apps.component.js.map
+    __metadata("design:paramtypes", [router_1.Router, apps_service_1.AppsService, api_exception_service_1.ApiExceptionService])
+], NewApiComponent);
+exports.NewApiComponent = NewApiComponent;
+//# sourceMappingURL=apis.new.component.js.map

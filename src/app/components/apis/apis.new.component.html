@@ -2,18 +2,30 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="page-header">
-        <h1 id="forms">New App</h1>
+        <h1 id="forms">New Api</h1>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-lg-12">
       <div class="well bs-component">
-        <form class="form-horizontal" (submit)="createApp($event, appName.value)">
+        <form class="form-horizontal" (submit)="createApp($event, apiName.value, appName.value, response.value)">
+          <div class="form-group">
+            <label for="app-name" class="col-lg-2 control-label">Title</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="api-name" #apiName required>
+            </div>
+          </div>
           <div class="form-group">
             <label for="app-name" class="col-lg-2 control-label">App Name</label>
             <div class="col-lg-10">
               <input type="text" class="form-control" id="app-name" #appName required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="app-name" class="col-lg-2 control-label">Response</label>
+            <div class="col-lg-10">
+              <textarea class="form-control" id="app-name" #response  required></textarea>
             </div>
           </div>
           <div class="form-group">

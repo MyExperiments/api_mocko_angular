@@ -8,10 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var authentication_service_1 = require('../../services/users/authentication.service');
-var api_exception_service_1 = require('../../services/api-exception.service');
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var authentication_service_1 = require("../../services/users/authentication.service");
+var api_exception_service_1 = require("../../services/api-exception.service");
 var LoginComponent = (function () {
     function LoginComponent(_authenticationService, _apiExceptionService, router) {
         this._authenticationService = _authenticationService;
@@ -34,15 +34,15 @@ var LoginComponent = (function () {
             _this._apiExceptionService.catch(error);
         });
     };
-    LoginComponent = __decorate([
-        core_1.Component({
-            selector: 'login',
-            templateUrl: 'app/components/login/login-form.component.html',
-            providers: [authentication_service_1.AuthenticationService, api_exception_service_1.ApiExceptionService]
-        }), 
-        __metadata('design:paramtypes', [authentication_service_1.AuthenticationService, api_exception_service_1.ApiExceptionService, router_1.Router])
-    ], LoginComponent);
     return LoginComponent;
 }());
+LoginComponent = __decorate([
+    core_1.Component({
+        selector: 'login',
+        templateUrl: 'app/components/login/login-form.component.html',
+        providers: [authentication_service_1.AuthenticationService, api_exception_service_1.ApiExceptionService]
+    }),
+    __metadata("design:paramtypes", [authentication_service_1.AuthenticationService, api_exception_service_1.ApiExceptionService, router_1.Router])
+], LoginComponent);
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map
