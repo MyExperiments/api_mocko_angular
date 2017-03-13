@@ -21,19 +21,20 @@ var NewApiComponent = (function () {
         this._appsService = _appsService;
         this._apiExceptionService = _apiExceptionService;
     }
-    NewApiComponent.prototype.createApp = function (event, apiName, appName, response) {
+    NewApiComponent.prototype.createApp = function (event, apiName, appName, response, endPoint) {
         var _this = this;
         event.preventDefault();
         var params = {
             "mock_api": {
                 "title": apiName,
                 "app": appName,
-                "api_response": response
+                "api_response": response,
+                "end_point": endPoint
             }
         };
         this._appsService.createApi(params).subscribe(function (response) {
             if (response.success) {
-                _this._router.navigate(['/apps']);
+                _this._router.navigate(['/apis']);
             }
         }, function (error) {
             _this._apiExceptionService.catch(error);

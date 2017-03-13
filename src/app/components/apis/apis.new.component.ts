@@ -17,19 +17,20 @@ export class NewApiComponent {
     this._apiExceptionService = _apiExceptionService;
   }
 
-  createApp(event, apiName, appName, response) {
+  createApp(event, apiName, appName, response, endPoint) {
     event.preventDefault();
     let params = {
       "mock_api": {
         "title": apiName,
         "app": appName,
-        "api_response": response
+        "api_response": response,
+        "end_point": endPoint
       }
     }
     this._appsService.createApi(params).subscribe(
       response => {
         if(response.success) {
-          this._router.navigate(['/apps']);
+          this._router.navigate(['/apis']);
         }
       },
       error => {
