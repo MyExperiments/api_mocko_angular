@@ -9,15 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var authentication_service_1 = require("../../services/users/authentication.service");
 var HeaderComponent = (function () {
-    function HeaderComponent(_authenticationService) {
+    function HeaderComponent(_authenticationService, router) {
         this._authenticationService = _authenticationService;
+        this.router = router;
         this.isSignedIn = false;
         this._authenticationService = _authenticationService;
         this.isSignedIn = this._authenticationService.isSignedIn();
         this.currentUser = this._authenticationService.getCurrentUser();
     }
+    HeaderComponent.prototype.logout = function (event) {
+        event.preventDefault();
+        this._authenticationService.removeCurrentUser();
+        this.router.navigate(['/login']);
+    };
     return HeaderComponent;
 }());
 HeaderComponent = __decorate([
@@ -26,7 +33,7 @@ HeaderComponent = __decorate([
         templateUrl: 'app/components/header/header.component.html',
         providers: [authentication_service_1.AuthenticationService]
     }),
-    __metadata("design:paramtypes", [authentication_service_1.AuthenticationService])
+    __metadata("design:paramtypes", [authentication_service_1.AuthenticationService, router_1.Router])
 ], HeaderComponent);
 exports.HeaderComponent = HeaderComponent;
 //# sourceMappingURL=header.component.js.map

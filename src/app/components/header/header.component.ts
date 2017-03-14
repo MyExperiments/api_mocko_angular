@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AuthenticationService } from '../../services/users/authentication.service';
 
@@ -11,9 +12,15 @@ import { AuthenticationService } from '../../services/users/authentication.servi
 export class HeaderComponent  {
   private isSignedIn = false;
   private currentUser;
-  constructor(private _authenticationService: AuthenticationService) {
+  constructor(private _authenticationService: AuthenticationService, private router: Router) {
     this._authenticationService = _authenticationService;
     this.isSignedIn = this._authenticationService.isSignedIn();
     this.currentUser = this._authenticationService.getCurrentUser();
+  }
+
+  logout(event) {
+    event.preventDefault();
+    this._authenticationService.removeCurrentUser();
+    this.router.navigate(['/login']);
   }
 }

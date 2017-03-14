@@ -1,4 +1,4 @@
-<div id="sidebar" class="nav-collapse" tabindex="5000" style="overflow: hidden; outline: none;" *ngIf="isSignedIn">
+<div id="sidebar" class="nav-collapse" tabindex="5000" style="overflow: hidden; outline: none;" [hidden]="!_authenticationService.isSignedIn()">
   <!-- sidebar menu start-->
   <ul class="sidebar-menu">
     <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
